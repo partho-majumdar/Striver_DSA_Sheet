@@ -18,7 +18,14 @@ int main()
         }
     }
 
-    cout << count;
+    if (count == 2)
+    {
+        cout << "Prime";
+    }
+    else
+    {
+        cout << "Not Prime";
+    }
+
     return 0;
 }
-
