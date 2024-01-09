@@ -17,9 +17,9 @@ int main()
     map<int, int> mpp;
     for (int i = 0; i < n; i++)
     {
-        // int value = arr[i];
-        // mpp[value]++;
-        mpp[arr[i]]++;
+        int value = arr[i];
+        mpp[value]++;
+        // mpp[arr[i]]++; shortcut
     }
 
     // print map value
