@@ -37,3 +37,4 @@ int main()
 }
 
 // how many times a number occur using hashing technique
+// array value inside main 10^6 and globally 10^7
