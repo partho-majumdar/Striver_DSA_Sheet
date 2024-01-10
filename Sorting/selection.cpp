@@ -27,4 +27,4 @@ int main()
     return 0;
 }
 
-// get the minimum and swap it (put minimum value in front)
+// get the minimum and swap it (put minimum value in front) best/worst/avg T.C --> O(N^2)
