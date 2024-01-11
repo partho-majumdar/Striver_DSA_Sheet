@@ -36,9 +36,9 @@ void mergeSort(int *arr, int low, int mid, int high)
     }
 
     // put temp value in main array
-    for (int i = 0; i < temp.size(); i++)
+    for (int i = low; i <= high; i++)
     {
-        arr[low + i] = temp[i];
+        arr[i] = temp[i - low];
     }
 }
 
