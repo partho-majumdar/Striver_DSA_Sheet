@@ -14,7 +14,7 @@ int findPartition(int *arr, int low, int high)
             i++;
         }
 
-        while (arr[j] > pivot && j > low + 1)
+        while (arr[j] > pivot && j >= low + 1)
         {
             j--;
         }
@@ -50,3 +50,12 @@ int main()
     }
     return 0;
 }
+
+/*
+
+1. find pivot and put it in correct place
+2. value < pivot lies left and value > pivot lies right
+
+T.C --> O(NlogN)
+
+*/
