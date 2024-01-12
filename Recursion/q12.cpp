@@ -29,4 +29,4 @@ int main()
     return 0;
 }
 
-// print path
+// print path only right and down
