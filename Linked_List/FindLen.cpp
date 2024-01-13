@@ -59,3 +59,5 @@ int main()
     cout << len;
     return 0;
 }
+
+// Given a Linked list means --> given the head of the linked list
