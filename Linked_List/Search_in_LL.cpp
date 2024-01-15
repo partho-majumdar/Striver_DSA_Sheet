@@ -54,7 +54,7 @@ int main()
 {
     vector<int> arr = {9, 1, 6, 5, 2};
     Node *head = arrToLL(arr);
-    int ans = searchValue(head, 512);
+    int ans = search_value(head, 1);
     if (ans == 1)
     {
         cout << "Yes found";
