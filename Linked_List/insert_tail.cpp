@@ -47,11 +47,31 @@ void printValue(Node *head)
     }
 }
 
+Node *insertInTail(Node *head, int value)
+{
+    if (head == NULL)
+    {
+        return new Node(value);
+    }
+
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    Node *newNode = new Node(value);
+    temp->next = newNode;
+    return head;
+}
+
 int main()
 {
     vector<int> arr = {8, 2, 7, 4, 3};
     Node *head = arr2LL(arr);
     printValue(head);
     cout << endl;
+    Node *ans = insertInTail(head, 100);
+    printValue(ans);
     return 0;
 }
