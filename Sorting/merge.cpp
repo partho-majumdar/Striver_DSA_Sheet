@@ -69,3 +69,5 @@ int main()
 
     return 0;
 }
+
+// divide and conquer time complexity --> 0(NlogN)
