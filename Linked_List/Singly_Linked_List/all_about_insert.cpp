@@ -22,7 +22,7 @@ public:
     }
 };
 
-// conver array to linked list
+// convert array to linked list
 Node *arrToLL(int arr[], int n)
 {
     Node *head = new Node(arr[0]);
