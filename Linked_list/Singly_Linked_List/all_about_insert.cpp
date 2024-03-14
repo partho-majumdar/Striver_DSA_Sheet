@@ -115,7 +115,7 @@ Node *insertKthElement(Node *head, int val, int k)
     return head;
 }
 
-// insert a value(val) before a particlular value(x)
+// insert a value(val) before a particular value(x)
 Node *insertBeforeValue(Node *head, int val, int x)
 {
     if (head == NULL)
