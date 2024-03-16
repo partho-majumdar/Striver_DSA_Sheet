@@ -58,11 +58,11 @@ void insertTail(int value)
     newNode->back = temp;
 }
 
-void insertKth(int value, int k)
+void insertKth(int x, int k)
 {
     if (head == NULL || k <= 1)
     {
-        insertHead(value);
+        insertHead(x);
         return;
     }
     Node *temp = head;
@@ -71,17 +71,18 @@ void insertKth(int value, int k)
     while (temp->next != NULL)
     {
         cnt++;
-        if (cnt == k)
+        if (cnt + 1 == k)
         {
             break;
         }
         temp = temp->next;
     }
-
-    Node *prev = temp->back;
-    Node *newNode = new Node(value, temp, prev);
-    prev->next = newNode;
-    temp->back = newNode;
+    Node *prev = temp;
+    Node *n1 = new Node(x, NULL, NULL);
+    n1->next = prev->next;
+    n1->back = prev;
+    prev->next = n1;
+    prev->next->back = n1;
 }
 
 void deleteHead()
@@ -169,7 +170,7 @@ int main()
     insertTail(13);
     insertTail(18);
 
-    insertKth(101, 2);
+    insertKth(101, 8);
 
     // deleteHead();
     // deleteTail();
