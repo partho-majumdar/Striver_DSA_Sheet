@@ -137,7 +137,7 @@ void printLL()
 {
     if (head == NULL)
     {
-        cout << "Empty Linkedlist";
+        cout << "Empty Linked list";
         return;
     }
 
