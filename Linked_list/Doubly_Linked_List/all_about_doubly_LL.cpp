@@ -122,28 +122,27 @@ void deleteTail()
 
 void deleteKth(int k)
 {
-    if (head->next == NULL || k == 1)
+    if (k <= 1)
     {
         deleteHead();
         return;
     }
-
-    Node *temp = head;
     int cnt = 0;
+    Node *temp = head;
     while (temp->next != NULL)
     {
         cnt++;
-        if (cnt == k)
+        if (cnt + 1 == k)
         {
             break;
         }
         temp = temp->next;
     }
-    Node *deleteNode = temp;
-    temp = temp->back;
-    temp->next = deleteNode->next;
-    deleteNode->next->back = temp;
-    delete deleteNode;
+    Node *deleteElement = temp->next;
+    temp->next = deleteElement->next;
+    deleteElement->next = NULL;
+    deleteElement->back = NULL;
+    delete deleteElement;
 }
 
 void printLL()
@@ -174,7 +173,7 @@ int main()
 
     // deleteHead();
     // deleteTail();
-    deleteKth(1);
+    deleteKth(6);
 
     printLL();
     return 0;
