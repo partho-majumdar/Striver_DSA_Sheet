@@ -3,8 +3,8 @@ using namespace std;
 
 int main()
 {
-    int n = 4;
     int arr[n] = {1, 2, 4, 7};
+    int n = sizeof(arr) / sizeof(arr[0]);
     int value = 6;
     int ans = n;
     int low = 0;

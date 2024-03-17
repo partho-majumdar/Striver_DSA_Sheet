@@ -3,12 +3,12 @@ using namespace std;
 
 int main()
 {
-    int n = 10;
-    int arr[n] = {1, 2, 3, 3, 5, 8, 8, 10, 10, 11};
+    int arr[] = {0, 2, 3, 3, 5, 8, 8, 10, 10, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
     int low = 0;
     int high = n - 1;
     int ans = n;
-    int target = 1;
+    int target = 6;
 
     while (low <= high)
     {
