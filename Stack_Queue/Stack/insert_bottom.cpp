@@ -6,16 +6,14 @@ void insertAtBottom(stack<int> &st, int x)
     stack<int> temp;
     while (!st.empty())
     {
-        int top = st.top();
+        temp.push(st.top());
         st.pop();
-        temp.push(top);
     }
     st.push(x);
     while (!temp.empty())
     {
-        int top = temp.top();
+        st.push(temp.top());
         temp.pop();
-        st.push(top);
     }
 }
 
@@ -28,6 +26,8 @@ int main()
     st.push(4);
 
     insertAtBottom(st, 101);
+    insertAtBottom(st, 105);
+    insertAtBottom(st, 109);
 
     while (!st.empty())
     {
