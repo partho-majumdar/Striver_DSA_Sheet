@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    int arr[] = {4, 2, -2, 1};
+    int arr[] = {2, 3, 5, -4, 6, -2, -8, 9};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     stack<int> stk;
