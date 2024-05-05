@@ -1,108 +1,130 @@
-#include <iostream>
-#include <stack>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-class Emp
+class Employee
 {
 public:
     string name;
     int id;
-    float work_hour;
+    float w_hr;
+    Employee *next;
 
 public:
-    Emp(string nam, int i_d, float w_hr)
+    Employee(string nam, int i_d, float hr)
     {
         name = nam;
         id = i_d;
-        work_hour = w_hr;
+        w_hr = hr;
+        next = NULL;
     }
 
     void display()
     {
-        cout << "Name: " << name << ", ID: " << id << ", Work Hour: " << work_hour << endl;
+        cout << "Name: " << name << ", ID: " << id << ", Work Hour: " << w_hr << endl;
     }
 };
 
-stack<Emp> empStack;
-
-void push(Emp employee)
+class MinStack
 {
-    empStack.push(employee);
-}
+private:
+    Employee *head;
 
-void pop()
-{
-    if (!empStack.empty())
+public:
+    MinStack() : head(NULL) {}
+
+    void push(Employee emp)
     {
-        empStack.pop();
-    }
-    else
-    {
-        cout << "Stack is empty" << endl;
-    }
-}
 
-Emp my_top()
-{
-    if (empStack.empty())
-    {
-        cout << "Stack empty";
-    }
-
-    return empStack.top();
-}
-
-void getMin()
-{
-    int min = INT_MAX;
-
-    while (!empStack.empty())
-    {
-        if (empStack.top().work_hour < min)
+        Employee *newNode = new Employee(emp);
+        if (head == NULL)
         {
-            min = empStack.top().work_hour;
+            head = newNode;
+            return;
         }
-        empStack.pop();
+        newNode->next = head;
+        head = newNode;
     }
 
-    cout << "Minimum work hour: " << min << endl;
-}
-
-void display()
-{
-    while (!empStack.empty())
+    void pop()
     {
-        empStack.top().display();
-        empStack.pop();
+        if (head == NULL)
+        {
+            cout << "Stack is empty" << endl;
+            return;
+        }
+
+        Employee *temp = head;
+        head = head->next;
+        delete temp;
     }
-}
+
+    Employee top()
+    {
+        if (head == NULL)
+        {
+            cout << "Stack empty";
+            return Employee("", -1, -1);
+        }
+        cout << "Top employee-> ";
+        head->display();
+        return *head;
+    }
+
+    void displaySt()
+    {
+        Employee *temp = head;
+        while (temp)
+        {
+            temp->display();
+            temp = temp->next;
+        }
+    }
+
+    Employee getMin()
+    {
+        if (head == NULL)
+        {
+            cout << "Stack is empty" << endl;
+            return Employee("", -1, -1);
+        }
+
+        Employee *temp = head;
+        Employee minEmp = *temp;
+
+        while (temp)
+        {
+            if (temp->w_hr < minEmp.w_hr)
+            {
+                minEmp = *temp;
+            }
+            temp = temp->next;
+        }
+
+        cout << "Employee with minimum work-hour:";
+        minEmp.display();
+        return minEmp;
+    }
+};
 
 int main()
 {
-    Emp e1("Rasel", 14, 45);
-    Emp e2("Yaseer", 23, 55);
-    Emp e3("Naheed", 33, 12);
-    Emp e4("Joy", 13, 17);
+    MinStack minStack;
 
-    empStack.push(e1);
-    empStack.push(e2);
-    empStack.push(e3);
-    empStack.push(e4);
+    Employee e1("a", 14, 45);
+    Employee e2("s", 23, 55);
+    Employee e3("d", 33, 12);
+    Employee e4("e", 13, 17);
 
-    pop();
+    minStack.push(e1);
+    minStack.push(e2);
+    minStack.push(e3);
+    minStack.push(e4);
 
-    Emp topEmployee = my_top();
+    minStack.pop();
 
-    if (!topEmployee.name.empty())
-    {
-        cout << "Top -> ";
-        topEmployee.display();
-    }
-
-    display();
-    getMin();
+    minStack.top();
+    minStack.displaySt();
+    minStack.getMin();
 
     return 0;
 }

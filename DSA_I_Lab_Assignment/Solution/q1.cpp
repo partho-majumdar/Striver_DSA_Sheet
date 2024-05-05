@@ -159,20 +159,20 @@ int main()
         arr_at_the_end(arr[i]);
     }
 
-    // delete_kth_element(6);
+    delete_kth_element(6);
 
     printLL();
     cout << endl;
     replace_last_by_sum();
     printLL();
 
-    // cout << endl
-    //      << "Even number: ";
+    cout << endl;
+    cout << "Even number: ";
 
-    // vector<int> ans = even_number();
-    // for (int i = 0; i < ans.size(); i++)
-    // {
-    //     cout << ans[i] << ", ";
-    // }
+    vector<int> ans = even_number();
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << ", ";
+    }
     return 0;
 }

@@ -11,6 +11,7 @@ public:
     Node(int d1)
     {
         data = d1;
+        next = NULL;
     }
 };
 
@@ -20,29 +21,32 @@ void push(int val)
 {
     Node *newNode = new Node(val);
 
+    if (head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+
     newNode->next = head;
     head = newNode;
 }
 
 int isEmpty()
 {
-    Node *temp = head;
-    int cnt = 0;
-    while (temp)
+    if (head == NULL)
     {
-        cnt++;
-        temp = temp->next;
+        return 1;
     }
-
-    if (cnt >= 1)
-    {
-        return 0;
-    }
-    return 1;
+    return 0;
 }
 
 int pop()
 {
+    if (isEmpty())
+    {
+        cout << "Stack Underflow" << endl;
+    }
+
     Node *temp = head;
     int value = temp->data;
     head = head->next;
@@ -50,8 +54,12 @@ int pop()
     return value;
 }
 
-int peak()
+int peek()
 {
+    if (isEmpty())
+    {
+        cout << "Stack is empty" << endl;
+    }
     return head->data;
 }
 
@@ -60,49 +68,47 @@ void display()
     Node *temp = head;
     while (temp)
     {
-        cout << temp->data << " -> ";
+        cout << temp->data << endl;
         temp = temp->next;
     }
 }
 
 void sort()
 {
-    Node *sorted = NULL;
-    while (head != NULL)
+    stack<int> st;
+
+    while (!isEmpty())
     {
         int val = pop();
-        if (sorted == NULL || val > sorted->data)
+
+        while (!st.empty() && st.top() < val)
         {
-            Node *newNode = new Node(val);
-            newNode->next = sorted;
-            sorted = newNode;
+            push(st.top());
+            st.pop();
         }
-        else
-        {
-            Node *temp = sorted;
-            while (temp->next != NULL && temp->next->data > val)
-            {
-                temp = temp->next;
-            }
-            Node *newNode = new Node(val);
-            newNode->next = temp->next;
-            temp->next = newNode;
-        }
+        st.push(val);
     }
-    head = sorted;
+
+    while (!st.empty())
+    {
+        push(st.top());
+        st.pop();
+    }
 }
 
 int main()
 {
-    push(12);
     push(4);
+    push(121);
+    push(12);
     push(16);
     push(3);
     push(18);
 
     sort();
-    // cout << "Delete item: " << pop() << endl;
-    cout << "Peak item: " << peak() << endl;
+
+    cout << "Delete item: " << pop() << endl;
+    cout << "Peek item: " << peek() << endl;
 
     display();
     return 0;

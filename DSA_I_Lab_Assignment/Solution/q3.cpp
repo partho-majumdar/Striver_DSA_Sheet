@@ -17,40 +17,30 @@ public:
 
 Node *head = NULL;
 
-void my_put(int val)
+void put(int val)
 {
     Node *newNode = new Node(val);
 
-    if (head == NULL || newNode->data > head->data)
+    if (head == NULL || newNode->data <= head->data)
     {
         newNode->next = head;
         head = newNode;
         return;
     }
-    
+
     else
     {
-        Node *current = head;
-        while (current->next != NULL && current->next->data > val)
+        Node *cur = head;
+        while (cur->next != NULL && cur->next->data < val)
         {
-            current = current->next;
+            cur = cur->next;
         }
-        newNode->next = current->next;
-        current->next = newNode;
+        newNode->next = cur->next;
+        cur->next = newNode;
     }
 }
 
-void print()
-{
-    Node *temp = head;
-    while (temp)
-    {
-        cout << temp->data << " -> ";
-        temp = temp->next;
-    }
-}
-
-int my_pop()
+int pop()
 {
     Node *temp = head;
     int pop_value = temp->data;
@@ -60,23 +50,29 @@ int my_pop()
     return pop_value;
 }
 
+void display()
+{
+    Node *temp = head;
+    while (temp)
+    {
+        cout << temp->data << endl;
+        temp = temp->next;
+    }
+}
+
 int main()
 {
-    my_put(5);
-    my_put(55);
-    my_put(65);
-    my_put(1);
-    my_put(10);
-    my_put(45);
-    my_put(2);
+    put(5);
+    put(55);
+    put(10);
+    put(45);
+    put(2);
+    put(12);
+    put(8);
 
-    cout << "Delete item: " << my_pop() << endl;
-    cout << "Delete item: " << my_pop() << endl;
-    cout << "Delete item: " << my_pop() << endl;
+    cout << "Delete item: " << pop() << endl;
+    cout << "Delete item: " << pop() << endl;
 
-    my_put(12);
-    my_put(8);
-
-    print();
+    display();
     return 0;
 }
