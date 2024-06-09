@@ -26,11 +26,6 @@ int main()
         {4, 70, 6, 1},
         {5, 9, 1}};
 
-    if (arr.empty())
-    {
-        cout << "The array is empty." << endl;
-    }
-
     int maxVal = find_matrix_max(arr, 0, 0);
     cout << "Maximum value: " << maxVal << endl;
 
