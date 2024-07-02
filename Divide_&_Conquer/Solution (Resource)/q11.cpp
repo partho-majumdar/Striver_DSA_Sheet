@@ -1,18 +1,17 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
-string commonPrefix(const string &s1, const string &s2)
+string commonPrefix(string &s1, string &s2)
 {
-    int minLength = min(s1.length(), s2.length());
-    for (int i = 0; i < minLength; i++)
+    int minLen = min(s1.length(), s2.length());
+    for (int i = 0; i < minLen; i++)
     {
         if (s1[i] != s2[i])
         {
             return s1.substr(0, i);
         }
     }
-    return s1.substr(0, minLength);
+    return s1.substr(0, minLen);
 }
 
 string longestCommonPrefix(string arr[], int low, int high)
@@ -22,25 +21,17 @@ string longestCommonPrefix(string arr[], int low, int high)
         return arr[low];
     }
 
-    if (high > low)
-    {
-        int mid = low + (high - low) / 2;
+    int mid = low + (high - low) / 2;
 
-        string s1 = longestCommonPrefix(arr, low, mid);
+    string leftPrefix = longestCommonPrefix(arr, low, mid);
+    string rightPrefix = longestCommonPrefix(arr, mid + 1, high);
 
-        string s2 = longestCommonPrefix(arr, mid + 1, high);
-
-        return commonPrefix(s1, s2);
-    }
-    return "";
+    return commonPrefix(leftPrefix, rightPrefix);
 }
 
 int main()
 {
-    string arr[] = {
-        "Algolab",
-        "Algorithms",
-        "Algeria"};
+    string arr[] = {"Algolab", "Algorithms", "Algeria"};
     int n = sizeof(arr) / sizeof(arr[0]);
     string result = longestCommonPrefix(arr, 0, n - 1);
     cout << "The longest common prefix is: " << result << endl;
