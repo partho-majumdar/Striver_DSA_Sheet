@@ -7,7 +7,6 @@ void validParenthesis(string s)
 
     for (auto i : s)
     {
-        // cout << i << " ";
         if (i == '(' || i == '{' || i == '[')
         {
             stk.push_back(i);
