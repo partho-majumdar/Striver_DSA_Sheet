@@ -23,12 +23,11 @@ void quick_sort(int arr[], int start, int end)
     }
     int pivot = my_partition(arr, start, end);
     quick_sort(arr, start, pivot - 1);
-    quick_sort(arr, pivot, end);
+    quick_sort(arr, pivot + 1, end);
 }
 
 int main()
 {
-
     int arr[] = {5, 9, 8, 1, 2, 7, 4, 6, 3, 10};
     int n = sizeof(arr) / sizeof(arr[0]);
 
