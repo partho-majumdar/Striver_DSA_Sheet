@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> bfs_traversal(vector<int> adj[], int v, int sn)
+vector<int> bfs_traversal(vector<int> adj[], int v, int start_node)
 {
     int visit[v + 1] = {0};
     queue<int> q;
     vector<int> ans;
 
-    q.push(sn);
-    visit[sn] = 1;
+    q.push(start_node);
+    visit[start_node] = 1;
 
     while (!q.empty())
     {
@@ -57,12 +57,12 @@ int main()
         cout << endl;
     }
 
-    int sn;
+    int start_node;
     cout << "which is gonna be your starting node: ";
-    cin >> sn;
+    cin >> start_node;
     cout << "After bfs traversal: ";
 
-    vector<int> result = bfs_traversal(adj, v, sn);
+    vector<int> result = bfs_traversal(adj, v, start_node);
     for (auto i : result)
     {
         cout << i << " ";
